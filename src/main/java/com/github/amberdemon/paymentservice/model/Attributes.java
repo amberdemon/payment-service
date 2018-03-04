@@ -1,6 +1,10 @@
 package com.github.amberdemon.paymentservice.model;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
+
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -8,40 +12,39 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class Attributes
-{
-    private Debtor_party debtor_party;
+public class Attributes {
+	private BigDecimal amount;
+	@ManyToOne
+	private DebtorParty debtorParty;
+	private SchemePaymentSubType schemePaymentSubType;
 
-    private String scheme_payment_sub_type;
+	private Fx fx;
 
-    private Fx fx;
+	private String reference;
 
-    private String reference;
+	private Currency currency;
 
-    private String currency;
+	private String payment_scheme;
 
-    private String amount;
+	private LocalDate processingDate;
 
-    private String payment_scheme;
+	private long numericReference;
 
-    private String processing_date;
+	private String paymentPurpose;
 
-    private String numeric_reference;
+	@ManyToOne
+	private BeneficiaryParty beneficiaryParty;
 
-    private String payment_purpose;
+	private ChargesInformation chargesInformation;
 
-    private Beneficiary_party beneficiary_party;
+	private String endToEndReference;
+	@ManyToOne
+	private SponsorParty sponsorParty;
 
-    private Charges_information charges_information;
+	private SchemePaymentType schemePaymentType;
 
-    private String end_to_end_reference;
+	private long paymentId;
 
-    private Sponsor_party sponsor_party;
-
-    private String scheme_payment_type;
-
-    private String payment_id;
-
-    private String payment_type;
+	private PaymentType paymentType;
 
 }
